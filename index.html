@@ -2,32 +2,56 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>BAU Solutions Limited </title>
-    <link rel="icon" type="image/x-icon" href="images/logo.ico"/>
+    <title>BAU Solutions Limited</title>
+    <link rel="icon" type="image/x-icon" href="images/logo.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        /* Basic reset and body styling */
         body, html {
-            height: 10%;
-            margin: 8%;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
         }
+
+        /* Flexbox centering for the container */
         .centered {
-            display: block;
-            justify-content: center; 
-            align-items: center;    
-            height: 50%;         
-            text-align: center;     
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height */
+            text-align: center;
+            padding: 0 10px; /* Add padding to ensure text doesn’t touch the screen edges */
+        }
+
+        /* Responsive text size */
+        h1 {
+            font-size: 2rem; /* Default size */
+        }
+
+        /* Make sure links and other text scale well */
+        a {
+            font-size: 1rem; /* Default size */
+        }
+
+        /* Media query for smaller screens */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5rem; /* Smaller font size on mobile */
+            }
+            a {
+                font-size: 0.9rem; /* Slightly smaller font size for links on mobile */
+            }
         }
     </style>
 </head>
 <body>
     <div class="centered">
-        <img src="images/BAU_Solutions_logo.png" alt="BAU Solutions Logo">
-        <h1 style="text-align: center; "> THIS WEBSITE IS UNDER CONTRUCTION!</h1>
-        For any queries, please send an email to <a href="mailto:info@bausolutions.africa">info@bausolutions.africa</a>
-        <br>
-        <br>
-        <a href="documents/BAU Solutions Limited - Company Profile 2024 (digital).pdf">Click here to download a copy of our Company Profile</a>
-
+        <img src="images/BAU_Solutions_logo.png" alt="BAU Solutions Logo" style="max-width: 100%; height: auto;">
+        <h1>THIS WEBSITE IS UNDER CONSTRUCTION!</h1>
+        <p>For any queries, please send an email to <a href="mailto:info@bausolutions.africa">info@bausolutions.africa</a></p>
+        <p><a href="documents/BAU Solutions Limited - Company Profile 2024 (digital).pdf">Click here to download a copy of our Company Profile</a></p>
     </div>
 </body>
 </html>
