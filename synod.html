@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SYNOD Data Collection Form</title>
+    <title>SYNOD - UCZ Trinity Membership Form</title>
     <link rel="icon" type="image/x-icon" href="images/logo.ico?">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
+  <style>
         body {
             padding-top: 56px;
             background-color: #f5f5f5;
@@ -153,11 +153,11 @@
     </script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="images/uczlogo.png" alt="Logo">
-                SYNOD - UCZ Trinity Membership Form
+                <img src="images/uczlogo.png" alt="Logo" class="d-inline-block align-text-top">
+				<h4 class="text-center">SYNOD Data Collection Form</h4>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -171,126 +171,289 @@
     </nav>
 
     <div class="container mt-5">
-        <div class="form-container">
-            <form>
-                <!-- Title -->
+        <form>
+            <!-- Title -->
+            <div class="row mb-3">
+                <div class="col-sm-12">
+                    <label for="title" class="form-label">Title</label>
+                    <select id="title" class="form-select" required onchange="checkFormCompletion()">
+                        <option value="" selected>Choose...</option>
+                        <option value="mr">Mr</option>
+                        <option value="mrs">Mrs</option>
+                        <option value="dr">Dr</option>
+                        <option value="miss">Miss</option>
+                        <option value="ms">Ms</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Name -->
+            <div class="row mb-3">
+                <div class="col-sm-6">
+                    <label for="first-name" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="first-name" placeholder="John" required oninput="checkFormCompletion()">
+                </div>
+                <div class="col-sm-6">
+                    <label for="surname" class="form-label">Surname</label>
+                    <input type="text" class="form-control" id="surname" placeholder="Doe" required oninput="checkFormCompletion()">
+                </div>
+            </div>
+            
+            <!-- Date of Birth -->
+            <div class="row mb-3">
+                <div class="col-sm-6">
+                    <label for="dob" class="form-label">Date of Birth</label>
+                    <input type="date" class="form-control" id="dob" required onchange="checkFormCompletion()">
+                </div>
+            </div>
+            
+            <!-- Gender -->
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">Gender</label>
+                <div class="col-sm-10">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="male" value="male" required onchange="checkFormCompletion()">
+                        <label class="form-check-label" for="male">Male</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="female" value="female" onchange="checkFormCompletion()">
+                        <label class="form-check-label" for="female">Female</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- NRC Number -->
+            <div class="row mb-3">
+                <div class="col-sm-6">
+                    <label for="nrc-number" class="form-label">NRC Number</label>
+                    <input type="text" class="form-control" id="nrc-number" placeholder="XXXXXX/XX/1" oninput="validateNRCNumber(this)" required>
+                </div>
+            </div>
+            
+            <!-- Membership Status -->
+            <div class="row mb-3">
+                <div class="col-sm-6">
+                    <label for="membership-status" class="form-label">Membership Status</label>
+                    <select id="membership-status" class="form-select" required onchange="checkFormCompletion()">
+                        <option value="" selected>Choose...</option>
+                        <option value="communicant">Communicant</option>
+                        <option value="catechumen">Catechumen</option>
+                        <option value="adherent">Adherent</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Date of Baptism -->
+            <div class="row mb-3">
+                <div class="col-sm-6">
+                    <label for="date-of-baptism" class="form-label">Date of Baptism</label>
+                    <input type="date" class="form-control" id="date-of-baptism" onchange="checkFormCompletion()">
+                </div>
+            </div>
+            
+            <!-- Date of Confirmation -->
+            <div class="row mb-3">
+                <div class="col-sm-6">
+                    <label for="date-of-confirmation" class="form-label">Date of Confirmation</label>
+                    <input type="date" class="form-control" id="date-of-confirmation" onchange="checkFormCompletion()">
+                </div>
+            </div>
+            
+            <!-- Groups Membership -->
+            <div class="row mb-3">
+                <label for="groups-membership" class="col-sm-2 col-form-label">Groups Membership</label>
+                <div class="col-sm-10">
+                    <select id="groups-membership" class="form-select" multiple required onchange="checkFormCompletion()">
+                        <option value="mcf">Men's Christian Fellowship (MCF)</option>
+                        <option value="wcf">Women's Christian Fellowship (WCF)</option>
+                        <option value="stewardship">Stewardship</option>
+                        <option value="girls-brigade">Girls Brigade</option>
+                        <option value="boys-brigade">Boys Brigade</option>
+                        <option value="sunday-school">Sunday School</option>
+                        <option value="teens-class">Teens Class</option>
+                        <option value="other">Other Specify</option>
+                    </select>
+                    <div id="other-specify-field" class="d-none mt-2">
+                        <input type="text" class="form-control" id="other-specify" placeholder="Specify Other Group">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Previous Church -->
+            <div class="row mb-3">
+                <div class="col-sm-6">
+                    <label for="previous-church" class="form-label">Previous Church</label>
+                    <input type="text" class="form-control" id="previous-church" placeholder="Previous Church" onchange="checkFormCompletion()">
+                </div>
+            </div>
+            
+            <!-- Phone Number -->
+            <div class="row mb-3">
+                <div class="col-sm-6">
+                    <label for="phone-number" class="form-label">Phone Number</label>
+                    <input type="text" class="form-control" id="phone-number" placeholder="+260-XXX-XXX-XXXX" oninput="validatePhoneNumber(this)" required>
+                </div>
+            </div>
+            
+            <!-- WhatsApp Number -->
+            <div class="row mb-3">
+                <div class="col-sm-6">
+                    <label for="whatsapp-number" class="form-label">WhatsApp Number</label>
+                    <input type="text" class="form-control" id="whatsapp-number" placeholder="+260-XXX-XXX-XXXX" oninput="validatePhoneNumber(this)">
+                </div>
+            </div>
+            
+            <!-- Email -->
+            <div class="row mb-3">
+                <div class="col-sm-6">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="example@example.com" required onchange="checkFormCompletion()">
+                </div>
+            </div>
+            
+            <!-- Address -->
+            <div class="row mb-3">
+                <div class="col-sm-6">
+                    <label for="address" class="form-label">Residential Address</label>
+                    <input type="text" class="form-control" id="address" placeholder="Residential Address" required onchange="checkFormCompletion()">
+                </div>
+            </div>
+            
+            <!-- Section -->
+            <div class="row mb-3">
+                <div class="col-sm-6">
+                    <label for="section" class="form-label">Section</label>
+                    <select id="section" class="form-select" required onchange="checkFormCompletion()">
+                        <option value="" selected>Select...</option>
+                        <option value="section-one">1</option>
+                        <option value="section-two">2</option>
+                        <option value="section-three">3</option>
+                        <option value="section-four">4</option>
+                        <option value="section-five">5</option>
+                        <option value="section-six">6</option>
+                        <option value="section-seven">7</option>
+                        <option value="section-eight">8</option>
+                        <option value="section-nine">9</option>
+                        <option value="section-ten">10</option>
+                        <option value="section-eleven">11</option>
+                        <option value="section-twelve">12</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Marital Status -->
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">Marital Status</label>
+                <div class="col-sm-10">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="marital-status" id="single" value="single" onclick="toggleSpouseField()" checked>
+                        <label class="form-check-label" for="single">Single</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="marital-status" id="married" value="married" onclick="toggleSpouseField()">
+                        <label class="form-check-label" for="married">Married</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="marital-status" id="divorced" value="divorced" onclick="toggleSpouseField()">
+                        <label class="form-check-label" for="divorced">Divorced</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="marital-status" id="widow" value="widow" onclick="toggleSpouseField()">
+                        <label class="form-check-label" for="widow">Widow/Widower</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Spouse's Name -->
+            <div class="row mb-3 d-none" id="spouse-field">
+                <label for="spouse-name" class="col-sm-2 col-form-label">Spouse's Name</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="spouse-name" placeholder="Spouse's Name" onchange="checkFormCompletion()">
+                </div>
+            </div>
+            
+            <!-- Children Section -->
+            <div class="row mb-3">
+                <div class="col-sm-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="has-children" onclick="toggleChildrenSection()">
+                        <label class="form-check-label" for="has-children">Check to add children</label>
+                    </div>
+                </div>
+            </div>
+            <div id="children-section" class="d-none">
                 <div class="row mb-3">
-                    <div class="col-sm-12">
-                        <label for="title" class="form-label">Title</label>
-                        <select id="title" class="form-select" required onchange="checkFormCompletion()">
-                            <option value="" selected>Choose...</option>
-                            <option value="mr">Mr</option>
-                            <option value="mrs">Mrs</option>
-                            <option value="dr">Dr</option>
-                            <option value="miss">Miss</option>
-                            <option value="ms">Ms</option>
-                        </select>
+                    <div class="col-sm-12" id="children-container">
+                        <!-- Child names will be dynamically added here -->
                     </div>
                 </div>
-                
-                <!-- Name -->
-                <div class="row mb-3">
-                    <div class="col-sm-6">
-                        <label for="first-name" class="form-label">First Name</label>
-                        <input type="text" class="form-control" id="first-name" placeholder="John" required oninput="checkFormCompletion()">
-                    </div>
-                    <div class="col-sm-6">
-                        <label for="surname" class="form-label">Surname</label>
-                        <input type="text" class="form-control" id="surname" placeholder="Doe" required oninput="checkFormCompletion()">
-                    </div>
+                <button type="button" class="btn btn-primary" onclick="addChild()">Add Child</button>
+            </div>
+            
+            <!-- Preferred Language -->
+            <div class="row mb-3">
+                <div class="col-sm-6">
+                    <label for="preferred-language" class="form-label">Preferred Language</label>
+                    <select id="preferred-language" class="form-select" required onchange="checkFormCompletion()">
+                        <option value="" selected>Choose...</option>
+                        <option value="english">English</option>
+                        <option value="bemba">Bemba</option>
+                        <option value="nyanja">Nyanja</option>
+                        <option value="lozi">Lozi</option>
+                        <option value="luvale">Luvale</option>
+                        <option value="kaonde">Kaonde</option>
+                        <option value="lunda">Lunda</option>
+                        <option value="tonga">Tonga</option>
+                    </select>
                 </div>
-                
-                <!-- Date of Birth -->
-                <div class="row mb-3">
-                    <div class="col-sm-6">
-                        <label for="dob" class="form-label">Date of Birth</label>
-                        <input type="date" class="form-control" id="dob" required onchange="checkFormCompletion()">
-                    </div>
+            </div>
+            
+            <!-- Education Level -->
+            <div class="row mb-3">
+                <div class="col-sm-6">
+                    <label for="education-level" class="form-label">Education Level</label>
+                    <select id="education-level" class="form-select" required onchange="checkFormCompletion()">
+                        <option value="" selected>Choose...</option>
+                        <option value="primary">Primary</option>
+                        <option value="secondary">Secondary</option>
+                        <option value="undergraduate">Undergraduate</option>
+                        <option value="graduate">Graduate</option>
+                        <option value="post-graduate">Post-Graduate</option>
+                        <option value="other">Other</option>
+                    </select>
                 </div>
-                
-                <!-- Gender -->
-                <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label">Gender</label>
-                    <div class="col-sm-10">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="gender" id="male" value="male" required onchange="checkFormCompletion()">
-                            <label class="form-check-label" for="male">Male</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="gender" id="female" value="female" onchange="checkFormCompletion()">
-                            <label class="form-check-label" for="female">Female</label>
-                        </div>
-                    </div>
+            </div>
+            
+            <!-- Professional Skills -->
+            <div class="row mb-3">
+                <div class="col-sm-6">
+                    <label for="professional-skills" class="form-label">Professional Skills</label>
+                    <input type="text" class="form-control" id="professional-skills" placeholder="Enter your professional skills" onchange="checkFormCompletion()">
                 </div>
-                
-                <!-- NRC Number -->
-                <div class="row mb-3">
-                    <div class="col-sm-6">
-                        <label for="nrc-number" class="form-label">NRC Number</label>
-                        <input type="text" class="form-control" id="nrc-number" placeholder="123456/78/1" required oninput="validateNRCNumber(this)">
-                    </div>
+            </div>
+            
+            <!-- Occupational Status -->
+            <div class="row mb-3">
+                <div class="col-sm-6">
+                    <label for="occupation-status" class="form-label">Occupational Status</label>
+                    <select id="occupation-status" class="form-select" required onchange="checkFormCompletion()">
+                        <option value="" selected>Choose...</option>
+                        <option value="employed">Employed</option>
+                        <option value="self-employed">Self-Employed</option>
+                        <option value="student">Student</option>
+                        <option value="unemployed">Unemployed</option>
+                        <option value="retired">Retired</option>
+                    </select>
                 </div>
-                
-                <!-- Phone Number -->
-                <div class="row mb-3">
-                    <div class="col-sm-6">
-                        <label for="phone-number" class="form-label">Phone Number</label>
-                        <input type="text" class="form-control" id="phone-number" placeholder="+260-123-456-7890" required oninput="validatePhoneNumber(this)">
-                    </div>
-                </div>
-                
-                <!-- Marital Status -->
-                <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label">Marital Status</label>
-                    <div class="col-sm-10">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="marital-status" id="single" value="single" required onchange="toggleSpouseField(); checkFormCompletion()">
-                            <label class="form-check-label" for="single">Single</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="marital-status" id="married" value="married" onchange="toggleSpouseField(); checkFormCompletion()">
-                            <label class="form-check-label" for="married">Married</label>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Spouse Details -->
-                <div id="spouse-field" class="d-none mb-3">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <label for="spouse-name" class="form-label">Spouse Name</label>
-                            <input type="text" class="form-control" id="spouse-name" placeholder="Jane Doe" oninput="checkFormCompletion()">
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Children -->
-                <div class="row mb-3">
-                    <div class="col-sm-12">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="has-children" onclick="toggleChildrenSection()">
-                            <label class="form-check-label" for="has-children">Do you have children?</label>
-                        </div>
-                    </div>
-                </div>
-                
-                <div id="children-section" class="d-none">
-                    <div id="children-container">
-                        <!-- Children fields will be added here -->
-                    </div>
-                    <div class="submit-container">
-                        <button type="button" class="btn btn-primary" onclick="addChild()">Add Child</button>
-                    </div>
-                </div>
-
-                <!-- Submit Button -->
-                <div class="submit-container">
-                    <button type="submit" id="submit-btn" class="btn btn-primary" disabled>Submit</button>
-                </div>
-            </form>
-        </div>
+            </div>
+            
+            <!-- Submit Button -->
+            <div class="submit-container">
+                <button type="submit" id="submit-btn" class="btn btn-primary" disabled>Submit</button>
+            </div>
+        </form>
     </div>
-
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
