@@ -6,7 +6,7 @@
 
 .navbar {   
     background-color: var(--primary-color);
-    height: 70px;
+    height: 56px;
     z-index: 1000;
 }
 
@@ -27,8 +27,8 @@
 
 /* Dropdown Menu Styling */
 .navbar-collapse {
-     background-color: var(--primary-color);
-    padding: 1rem;
+    background-color: var(--primary-color);
+    padding: 0rem;
     border-radius: 0.5rem;
 }
 
@@ -72,7 +72,7 @@
 }
 
 header { 
-    margin-top: 50px;
+    margin-top: 56px;
     background-color: var(--primary-color); /* Use the primary color for background */
     background-image: url("../images/large-truck-carrying-sand-platinum-mining-site-africa.jpg") !important; 
     background-size: cover; 
