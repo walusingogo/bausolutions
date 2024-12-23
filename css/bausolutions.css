@@ -28,7 +28,7 @@
 header { 
     margin-top: 50px;
     background-color: var(--primary-color); /* Use the primary color for background */
-    background-image: url("../images/large-truck-carrying-sand-platinum-mining-site-africa.jpg"); 
+    background-image: url("../images/large-truck-carrying-sand-platinum-mining-site-africa.jpg") !important; 
     background-size: cover; 
     background-position: center;
     color: var(--secondary-color);
@@ -41,7 +41,7 @@ header {
 
 #services {
     background-color: var(--accent-color);
-    background-image: url("../images/man-hard-hat-stands-front-waterfall.png"); 
+    background-image: url("../images/man-hard-hat-stands-front-waterfall.png") !important; 
     background-size: cover; 
     background-position: center;
     color: var(--secondary-color);
