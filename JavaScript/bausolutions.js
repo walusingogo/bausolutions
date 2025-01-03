@@ -45,3 +45,21 @@ document.getElementById('contactForm').addEventListener('submit', function (even
         submitButton.textContent = "Submit";
     });
 });
+
+    //NavBar behavior  
+    document.addEventListener("DOMContentLoaded", function () {
+        // Get all nav-link elements
+        const navLinks = document.querySelectorAll(".nav-link");
+        const navbarCollapse = document.querySelector(".navbar-collapse");
+
+        navLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                // Check if navbar is expanded
+                if (navbarCollapse.classList.contains("show")) {
+                    // Close the navbar
+                    const bootstrapCollapse = new bootstrap.Collapse(navbarCollapse);
+                    bootstrapCollapse.hide();
+                }
+            });
+        });
+    });
