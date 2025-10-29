@@ -750,6 +750,10 @@
                 <div class="col-md-6">
                     <h4>Send Us a Message</h4>
                     <form id="contactForm">
+                        <!-- Anti-spam helpers -->
+                        <input type="text" class="hp-field" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+                        <input type="hidden" name="t0" id="t0">
+                        
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
                             <input type="text" class="form-control" id="name" required>
@@ -766,6 +770,12 @@
                             <label for="message" class="form-label">Message</label>
                             <textarea class="form-control" id="message" rows="4" required></textarea>
                         </div>
+
+                        <!-- Cloudflare Turnstile (optional, adaptive) -->
+                        <div id="turnstile-box" style="display:none;">
+                              <div class="cf-turnstile" data-sitekey="YOUR_TURNSTILE_SITE_KEY"></div>
+                        </div>
+
                         <button type="submit" class="btn btn-success" id="submitButton">Submit</button>
                     </form>
                 </div>
@@ -780,8 +790,10 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <script src="./JavaScript/bausolutions.js"></script>
 
 </body>
 
 </html>
+
