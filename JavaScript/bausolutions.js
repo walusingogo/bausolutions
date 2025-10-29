@@ -1,65 +1,146 @@
-// Initialize EmailJS
-emailjs.init("Ib3LPJQWavUBFpeXR"); // Replace with your EmailJS user ID
+(() => {
+  // === Utilities ===
+  const $ = (sel) => document.querySelector(sel);
+  const $$ = (sel) => Array.from(document.querySelectorAll(sel));
 
-// Handle Form Submission
-document.getElementById('contactForm').addEventListener('submit', function (event) {
-    event.preventDefault();
+  // Toast helpers (Bootstrap 5)
+  function showToast(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const t = bootstrap.Toast.getOrCreateInstance(el);
+    t.show();
+  }
 
-    // Collect form data
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const subject = document.getElementById('subject').value;
-    const message = document.getElementById('message').value;
-    const submitButton = document.getElementById('submitButton');
+  // === Anti-spam config ===
+  const MIN_DELAY_MS = 3000;            // reject if form submitted quicker than this
+  const MAX_AGE_MS   = 20 * 60 * 1000;  // reject if form older than this (20 min)
+  const MAX_URLS_IN_MESSAGE = 1;        // allow at most 1 link in message
+  const SUSPICIOUS_PATTERNS = /(casino|viagra|loan|crypto|bitcoin|seo|guest\s*post)/i;
 
-    // Disable button and show "Sending..."
-    submitButton.disabled = true;
-    submitButton.textContent = "Sending...";
-    
-    // Send email
-    emailjs.send("bausolutions_msgservice", "bausolutions_msgtemplate", {
-        name: name,
-        email: email,
-        subject: subject,
-        message: message
-    }).then(() => {
-        // Show toast notification on success
-        const toast = new bootstrap.Toast(document.getElementById('emailSuccessToast'));
-        toast.show();
-        
-        // Optionally, you can add a timeout before refreshing the page
-        setTimeout(() => {
-            window.location.reload(); // Refresh the page
-        }, 2000); // Adjust the delay (in milliseconds) as needed
-        
-    }).catch((error) => {
-        //console.error("Error sending email:", error);
-        //alert("We are having trouble submitting your message. Please email your message to the following address: info@bausolutions.africa");
-        const toast = new bootstrap.Toast(document.getElementById('emailFailToast'));
-        toast.show();
-    })
-    
-    .finally(function () {
-        // Enable button and reset text
-        submitButton.disabled = false;
-        submitButton.textContent = "Submit";
+  // === On page ready ===
+  document.addEventListener('DOMContentLoaded', () => {
+    // set render timestamp
+    const t0 = document.getElementById('t0');
+    if (t0) t0.value = Date.now().toString();
+
+    // randomize honeypot name to break brittle scripts
+    const hp = document.querySelector('input.hp-field');
+    if (hp) {
+      hp.name = 'website_' + Math.random().toString(36).slice(2, 9);
+      hp.value = ''; // make sure it's empty
+    }
+
+    // optional: pre-init EmailJS (only if you actually use it; otherwise remove)
+    if (window.emailjs && emailjs.init) {
+      // TODO: put your EmailJS Public Key here
+      // emailjs.init("Ib3LPJQWavUBFpeXR");
+    }
+  });
+
+  // === Validation & submission ===
+  const form = document.getElementById('contactForm');
+  const submitBtn = document.getElementById('submitButton');
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Basic field refs
+      const nameEl = document.getElementById('name');
+      const emailEl = document.getElementById('email');
+      const subjEl = document.getElementById('subject');
+      const msgEl = document.getElementById('message');
+
+      // 0) Lock button to stop double-submits
+      if (submitBtn) submitBtn.disabled = true;
+
+      try {
+        // 1) Honeypot
+        const hpFilled = !!($('input.hp-field')?.value?.trim());
+        if (hpFilled) throw new Error('Spam detected (honeypot).');
+
+        // 2) Timing checks
+        const t0 = Number(document.getElementById('t0')?.value || 0);
+        const age = Date.now() - t0;
+        if (isNaN(t0) || age < MIN_DELAY_MS || age > MAX_AGE_MS) {
+          throw new Error('Suspicious timing.');
+        }
+
+        // 3) Required fields (you already have required in HTML; we double-check server-style)
+        const name = (nameEl?.value || '').trim();
+        const email = (emailEl?.value || '').trim();
+        const subject = (subjEl?.value || '').trim();
+        const message = (msgEl?.value || '').trim();
+
+        if (!name || !email || !subject || !message) {
+          throw new Error('Please fill in all fields.');
+        }
+
+        // 4) Content heuristics: don’t allow links in name/subject; limit in message
+        const urlRegex = /https?:\/\/|www\./gi;
+        if (urlRegex.test(name) || urlRegex.test(subject)) {
+          throw new Error('Links are not allowed in name or subject.');
+        }
+        const messageUrlCount = (message.match(urlRegex) || []).length;
+        if (messageUrlCount > MAX_URLS_IN_MESSAGE) {
+          throw new Error('Too many links in the message.');
+        }
+
+        // 5) Quick spam phrase sniff
+        const looksSpammy = SUSPICIOUS_PATTERNS.test(message) || age < (MIN_DELAY_MS + 2000);
+
+        // 6) (Optional) Adaptive Turnstile: only require if looksSpammy
+        if (looksSpammy) {
+          const tsBox = document.getElementById('turnstile-box');
+          if (tsBox) tsBox.style.display = 'block';
+
+          // If you’re actually using Turnstile, you need to verify the token server-side.
+          // Get the token from the injected widget
+          const tsToken = (window.turnstile && $('textarea[name="cf-turnstile-response"]')?.value) || '';
+          // Send tsToken to your backend along with the form (see server sample below).
+          // If you don’t have a backend yet, comment this out and rely on the other checks.
+        }
+
+        // 7) === Send the message ===
+        // Pick ONE path:
+        // A) Using EmailJS (frontend only)
+        if (window.emailjs) {
+          // Replace with your EmailJS service/template IDs and fields mapping
+           const result = await emailjs.send("bausolutions_msgservice", "bausolutions_msgtemplate", {
+             from_name: name,
+             from_email: email,
+             subject: subject,
+             message: message
+          // });
+          // If success:
+          showToast('emailSuccessToast');
+          form.reset();
+          // reset anti-spam timestamp after successful send
+          const t0 = document.getElementById('t0');
+          if (t0) t0.value = Date.now().toString();
+        } else {
+          // B) Using your own backend endpoint (recommended)
+           const resp = await fetch('/api/contact', {
+             method: 'POST',
+             headers: {'Content-Type': 'application/json'},
+             body: JSON.stringify({ name, email, subject, message, t0, tsToken })
+           });
+          // if (!resp.ok) throw new Error('Server rejected');
+          showToast('emailSuccessToast');
+          form.reset();
+          const t0 = document.getElementById('t0');
+          if (t0) t0.value = Date.now().toString();
+        }
+
+      } catch (err) {
+        console.warn(err);
+        showToast('emailFailToast');
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
+      }
     });
-});
+  }
+})();
 
-    //NavBar behavior  
-    document.addEventListener("DOMContentLoaded", function () {
-        // Get all nav-link elements
-        const navLinks = document.querySelectorAll(".nav-link");
-        const navbarCollapse = document.querySelector(".navbar-collapse");
 
-        navLinks.forEach(link => {
-            link.addEventListener("click", () => {
-                // Check if navbar is expanded
-                if (navbarCollapse.classList.contains("show")) {
-                    // Close the navbar
-                    const bootstrapCollapse = new bootstrap.Collapse(navbarCollapse);
-                    bootstrapCollapse.hide();
-                }
-            });
-        });
-    });
+
