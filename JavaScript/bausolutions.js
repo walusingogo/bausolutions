@@ -11,6 +11,23 @@ document.getElementById('contactForm').addEventListener('submit', function (even
     const subject = document.getElementById('subject').value;
     const message = document.getElementById('message').value;
     const submitButton = document.getElementById('submitButton');
+	
+	// ===== reCAPTCHA CHECK =====
+    // Check that the reCAPTCHA API is loaded
+	if (typeof grecaptcha === 'undefined') {
+        console.error("reCAPTCHA script did not load.");
+        alert("Captcha failed to load. Please refresh the page and try again.");
+        return;
+    }
+
+	
+	// Check reCAPTCHA
+    const recaptchaResponse = grecaptcha.getResponse();
+    if (!recaptchaResponse) {
+        alert("Please verify that you are not a robot.");
+        return; // stop submission
+    }
+
 
     // Disable button and show "Sending..."
     submitButton.disabled = true;
@@ -21,7 +38,10 @@ document.getElementById('contactForm').addEventListener('submit', function (even
         name: name,
         email: email,
         subject: subject,
-        message: message
+        message: message,
+		
+        // optionally pass the token through if you validate server-side later
+        'g-recaptcha-response': recaptchaResponse
     }).then(() => {
         // Show toast notification on success
         const toast = new bootstrap.Toast(document.getElementById('emailSuccessToast'));
@@ -45,6 +65,8 @@ document.getElementById('contactForm').addEventListener('submit', function (even
         submitButton.textContent = "Submit";
     });
 });
+
+
 
     //NavBar behavior  
     document.addEventListener("DOMContentLoaded", function () {
