@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en" id="top" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BAU Solutions | Business Process Automation</title>
+  <meta
+    name="description"
+    content="BAU Solutions helps businesses automate workflows, approvals, requests, reporting, and operational handoffs with practical business process automation solutions."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  />
+  <link rel="stylesheet" href="css/bausolutions.css" />
+</head>
+<body>
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="#top" class="brand">
+        <img
+          src="images/BAU_Solutions_logo.png"
+          alt="BAU Solutions Logo"
+          class="logo-image"
+        />
+        <div class="brand-text">
+          <span class="brand-name">BAU Solutions</span>
+          <span class="brand-tag">Business Process Automation</span>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <button
+          type="button"
+          class="theme-toggle"
+          id="themeToggle"
+          aria-label="Toggle light and dark mode"
+          title="Toggle theme"
+        >
+          <i class="fa-solid fa-moon"></i>
+          <span>Dark</span>
+        </button>
+
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          type="button"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <nav class="site-nav" id="siteNav">
+        <a href="#services">Services</a>
+        <a href="#examples">Examples</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#industries">Use Cases</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="btn btn-sm btn-primary">Book a Consultation</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero section">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <div class="eyebrow">
+            <i class="fa-solid fa-diagram-project"></i>
+            Workflow automation for real operations
+          </div>
+
+          <h1>Automate the work that slows your business down.</h1>
+
+          <p class="hero-text">
+            BAU Solutions helps businesses replace manual approvals, repeated data
+            entry, disconnected systems, and email-heavy handoffs with clear
+            workflows, stronger control, and better visibility.
+          </p>
+
+          <div class="hero-tags">
+            <span>Purchase Requests</span>
+            <span>Invoice Approvals</span>
+            <span>Service Updates</span>
+            <span>HR Requests</span>
+            <span>Operational Reporting</span>
+          </div>
+
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary">Book a Consultation</a>
+            <a href="#examples" class="btn btn-secondary">See Example Workflows</a>
+          </div>
+
+          <div class="hero-metrics">
+            <div class="metric-card">
+              <strong>Less manual chasing</strong>
+              <span>Work moves through a defined process instead of inbox chaos.</span>
+            </div>
+            <div class="metric-card">
+              <strong>Clearer handoffs</strong>
+              <span>Each step has an owner, a status, and a record.</span>
+            </div>
+            <div class="metric-card">
+              <strong>Better visibility</strong>
+              <span>See what is pending, delayed, approved, or complete.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-panel reveal">
+          <div class="workflow-showcase">
+            <div class="workflow-showcase-head">
+              <div>
+                <p class="workflow-kicker">Example workflow</p>
+                <h3 id="workflowTitle">Purchase Request Approval</h3>
+              </div>
+
+              <div class="workflow-tabs" role="tablist" aria-label="Workflow examples">
+                <button class="workflow-tab active" data-workflow="0" type="button">Purchase</button>
+                <button class="workflow-tab" data-workflow="1" type="button">HR</button>
+                <button class="workflow-tab" data-workflow="2" type="button">Service</button>
+              </div>
+            </div>
+
+            <div class="workflow-stage">
+              <section class="workflow-slide active">
+                <div class="workflow-line">
+                  <article class="workflow-step">
+                    <div class="step-badge">01</div>
+                    <h4>Request submitted</h4>
+                  </article>
+
+                  <div class="workflow-connector"><span></span></div>
+
+                  <article class="workflow-step">
+                    <div class="step-badge">02</div>
+                    <h4>Manager review</h4>
+                  </article>
+
+                  <div class="workflow-connector"><span></span></div>
+
+                  <article class="workflow-step">
+                    <div class="step-badge">03</div>
+                    <h4>Finance check</h4>
+                  </article>
+
+                  <div class="workflow-connector"><span></span></div>
+
+                  <article class="workflow-step">
+                    <div class="step-badge">04</div>
+                    <h4>Status updated</h4>
+                  </article>
+                </div>
+
+                <div class="workflow-footnotes">
+                  <div class="workflow-note">
+                    <strong>What improves</strong>
+                    <span>No chasing for approvals and no unclear status.</span>
+                  </div>
+                  <div class="workflow-note">
+                    <strong>What stays visible</strong>
+                    <span>Who submitted, who approved, and what is still pending.</span>
+                  </div>
+                </div>
+              </section>
+
+              <section class="workflow-slide">
+                <div class="workflow-line">
+                  <article class="workflow-step">
+                    <div class="step-badge">01</div>
+                    <h4>Leave request raised</h4>
+                  </article>
+
+                  <div class="workflow-connector"><span></span></div>
+
+                  <article class="workflow-step">
+                    <div class="step-badge">02</div>
+                    <h4>Manager approval</h4>
+                  </article>
+
+                  <div class="workflow-connector"><span></span></div>
+
+                  <article class="workflow-step">
+                    <div class="step-badge">03</div>
+                    <h4>HR record updated</h4>
+                  </article>
+
+                  <div class="workflow-connector"><span></span></div>
+
+                  <article class="workflow-step">
+                    <div class="step-badge">04</div>
+                    <h4>Confirmation sent</h4>
+                  </article>
+                </div>
+
+                <div class="workflow-footnotes">
+                  <div class="workflow-note">
+                    <strong>What improves</strong>
+                    <span>Less back-and-forth between employee, manager, and HR.</span>
+                  </div>
+                  <div class="workflow-note">
+                    <strong>What stays visible</strong>
+                    <span>Request date, approval status, and complete history.</span>
+                  </div>
+                </div>
+              </section>
+
+              <section class="workflow-slide">
+                <div class="workflow-line">
+                  <article class="workflow-step">
+                    <div class="step-badge">01</div>
+                    <h4>Service update logged</h4>
+                  </article>
+
+                  <div class="workflow-connector"><span></span></div>
+
+                  <article class="workflow-step">
+                    <div class="step-badge">02</div>
+                    <h4>Issue detected</h4>
+                  </article>
+
+                  <div class="workflow-connector"><span></span></div>
+
+                  <article class="workflow-step">
+                    <div class="step-badge">03</div>
+                    <h4>Task assigned</h4>
+                  </article>
+
+                  <div class="workflow-connector"><span></span></div>
+
+                  <article class="workflow-step">
+                    <div class="step-badge">04</div>
+                    <h4>Status tracked</h4>
+                  </article>
+                </div>
+
+                <div class="workflow-footnotes">
+                  <div class="workflow-note">
+                    <strong>What improves</strong>
+                    <span>Faster follow-ups and cleaner coordination between teams.</span>
+                  </div>
+                  <div class="workflow-note">
+                    <strong>What stays visible</strong>
+                    <span>Issue history, assigned owner, and current job status.</span>
+                  </div>
+                </div>
+              </section>
+            </div>
+
+            <div class="workflow-progress" aria-hidden="true">
+              <span class="workflow-progress-bar" id="workflowProgressBar"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-bar">
+      <div class="container trust-items">
+        <span>Approvals</span>
+        <span>Routing</span>
+        <span>Forms</span>
+        <span>Handoffs</span>
+        <span>Integrations</span>
+        <span>Reporting</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-label">Where automation helps</span>
+          <h2>The biggest delays are usually small process failures.</h2>
+          <p>
+            Most operational drag comes from repeat work with no clear owner, no
+            single status, and too many manual steps between teams.
+          </p>
+        </div>
+
+        <div class="proof-grid">
+          <article class="proof-card reveal">
+            <h3>Approvals with no owner</h3>
+            <p>Requests sit in inboxes, approvals stall, and nobody can see where the delay is.</p>
+            <ul class="mini-list">
+              <li>Approval routing by role or value</li>
+              <li>Escalations when deadlines are missed</li>
+              <li>One visible status from start to finish</li>
+            </ul>
+          </article>
+
+          <article class="proof-card reveal">
+            <h3>The same data entered twice</h3>
+            <p>Teams capture information in one place, then retype it elsewhere later.</p>
+            <ul class="mini-list">
+              <li>Structured digital forms</li>
+              <li>Cleaner records and fewer mistakes</li>
+              <li>System-to-system handoffs where possible</li>
+            </ul>
+          </article>
+
+          <article class="proof-card reveal">
+            <h3>No clear audit trail</h3>
+            <p>Work gets done, but the business cannot easily prove who approved what and when.</p>
+            <ul class="mini-list">
+              <li>Time-stamped workflow history</li>
+              <li>Decision and exception tracking</li>
+              <li>Better reporting for management and compliance</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-label">Services</span>
+          <h2>What BAU Solutions can help automate</h2>
+          <p>
+            We focus on the work that happens every day across finance, operations,
+            administration, field teams, and internal support functions.
+          </p>
+        </div>
+
+        <div class="cards-grid">
+          <article class="service-card reveal">
+            <div class="icon-box"><i class="fa-solid fa-diagram-project"></i></div>
+            <h3>Workflow design and automation</h3>
+            <p>Map the current process, remove unnecessary steps, and build a cleaner flow.</p>
+            <ul>
+              <li>Approval flows</li>
+              <li>Task routing</li>
+              <li>Escalation logic</li>
+              <li>Status tracking</li>
+            </ul>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="icon-box"><i class="fa-solid fa-file-signature"></i></div>
+            <h3>Approvals and request systems</h3>
+            <p>Replace ad hoc email chains with a proper request-and-approval process.</p>
+            <ul>
+              <li>Purchase requests</li>
+              <li>Expense approvals</li>
+              <li>Internal service requests</li>
+              <li>Policy sign-offs</li>
+            </ul>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="icon-box"><i class="fa-solid fa-file-lines"></i></div>
+            <h3>Forms and records</h3>
+            <p>Capture information properly at source and reduce manual document handling.</p>
+            <ul>
+              <li>Digital forms</li>
+              <li>Submission tracking</li>
+              <li>Document workflows</li>
+              <li>Audit history</li>
+            </ul>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="icon-box"><i class="fa-solid fa-plug-circle-bolt"></i></div>
+            <h3>Systems integration</h3>
+            <p>Connect the tools you already use so information does not have to be re-captured.</p>
+            <ul>
+              <li>API integrations</li>
+              <li>Data syncing</li>
+              <li>Legacy system bridging</li>
+              <li>Shared status updates</li>
+            </ul>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="icon-box"><i class="fa-solid fa-chart-column"></i></div>
+            <h3>Reporting and visibility</h3>
+            <p>Give managers a simple view of pending work, turnaround times, and exceptions.</p>
+            <ul>
+              <li>Live status dashboards</li>
+              <li>KPI reporting</li>
+              <li>Exception visibility</li>
+              <li>Process monitoring</li>
+            </ul>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="icon-box"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+            <h3>Process improvement support</h3>
+            <p>Sometimes the fix is not more software. It is a tighter process and better controls.</p>
+            <ul>
+              <li>Process reviews</li>
+              <li>Workflow clean-up</li>
+              <li>Refinement after go-live</li>
+              <li>Implementation support</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark-section" id="examples">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-label">Examples</span>
+          <h2>What this looks like in practice</h2>
+          <p>
+            Click any example below to open a quick interactive workflow demo.
+          </p>
+        </div>
+
+        <div class="example-grid">
+          <article class="example-card reveal demo-card-trigger" data-demo="purchase" tabindex="0" role="button" aria-label="Open purchase requests demo">
+            <h3>Purchase requests</h3>
+            <p>Standardise how requests are captured, reviewed, approved, and handed over.</p>
+            <div class="case-steps">
+              <div class="case-step">Request captured<span>One digital form with required fields.</span></div>
+              <div class="case-step">Routed for approval<span>Manager and finance rules applied automatically.</span></div>
+              <div class="case-step">Status reported<span>Requester and management can see progress clearly.</span></div>
+            </div>
+          </article>
+
+          <article class="example-card reveal demo-card-trigger" data-demo="service" tabindex="0" role="button" aria-label="Open service updates demo">
+            <h3>Field or service updates</h3>
+            <p>Give teams a cleaner way to capture work done and follow-up actions needed.</p>
+            <div class="case-steps">
+              <div class="case-step">Update logged<span>Technician or operator submits work detail once.</span></div>
+              <div class="case-step">Follow-up assigned<span>Issues route to the right team without back-and-forth.</span></div>
+              <div class="case-step">Outcome tracked<span>Managers get a proper record and a live status view.</span></div>
+            </div>
+          </article>
+
+          <article class="example-card reveal demo-card-trigger" data-demo="leave" tabindex="0" role="button" aria-label="Open leave request demo">
+            <h3>Internal staff requests</h3>
+            <p>Streamline common requests such as leave, onboarding, access, or internal approvals.</p>
+            <div class="case-steps">
+              <div class="case-step">Request submitted<span>Staff use one channel instead of chasing multiple people.</span></div>
+              <div class="case-step">Approval completed<span>Managers get notified and reminded automatically.</span></div>
+              <div class="case-step">Record retained<span>HR or admin can review the full request history later.</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how-it-works">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-label">How it works</span>
+          <h2>A simple approach that keeps the work practical.</h2>
+          <p>
+            We start with the current process, identify where time is being lost,
+            and build something people can actually use.
+          </p>
+        </div>
+
+        <div class="steps-grid">
+          <article class="step-card reveal">
+            <span class="step-no">01</span>
+            <h3>Review the current process</h3>
+            <p>We look at how the work moves today, where it gets delayed, and what is still too manual.</p>
+          </article>
+
+          <article class="step-card reveal">
+            <span class="step-no">02</span>
+            <h3>Map the improved workflow</h3>
+            <p>We define the right steps, owners, rules, exceptions, and reporting needed.</p>
+          </article>
+
+          <article class="step-card reveal">
+            <span class="step-no">03</span>
+            <h3>Build and connect</h3>
+            <p>We implement the forms, routing, notifications, and integrations that make it work.</p>
+          </article>
+
+          <article class="step-card reveal">
+            <span class="step-no">04</span>
+            <h3>Refine after go-live</h3>
+            <p>We review usage, tighten edge cases, and improve the process as the business grows.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="industries">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-label">Use cases</span>
+          <h2>Where BAU Solutions usually fits best</h2>
+          <p>
+            Automation works best where there are frequent handoffs, repeat approvals,
+            and too much manual follow-up between teams.
+          </p>
+        </div>
+
+        <div class="tabs reveal">
+          <div class="tab-buttons">
+            <button class="tab-btn active" data-tab="tab1" type="button">Finance & Admin</button>
+            <button class="tab-btn" data-tab="tab2" type="button">Service Operations</button>
+            <button class="tab-btn" data-tab="tab3" type="button">HR & Internal Requests</button>
+          </div>
+
+          <div class="tab-content active" id="tab1">
+            <div class="tab-panel">
+              <h3>Finance & Admin</h3>
+              <ul class="mini-list">
+                <li>Purchase requests and approvals</li>
+                <li>Invoice review and document flow</li>
+                <li>Vendor onboarding and internal sign-offs</li>
+                <li>Recurring admin requests with clear tracking</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="tab-content" id="tab2">
+            <div class="tab-panel">
+              <h3>Service and operations teams</h3>
+              <ul class="mini-list">
+                <li>Job updates and follow-up actions</li>
+                <li>Maintenance coordination and exception routing</li>
+                <li>Stock, parts, or support requests</li>
+                <li>Operational reporting from multiple teams</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="tab-content" id="tab3">
+            <div class="tab-panel">
+              <h3>HR and internal services</h3>
+              <ul class="mini-list">
+                <li>Leave requests and internal approvals</li>
+                <li>Onboarding and access requests</li>
+                <li>Policy acknowledgements and staff records</li>
+                <li>Internal support requests with proper follow-through</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="benefits-grid">
+          <article class="benefit-card reveal">
+            <i class="fa-solid fa-clock"></i>
+            <h4>Reduce turnaround time</h4>
+            <p>Work moves faster when routing and reminders happen automatically.</p>
+          </article>
+
+          <article class="benefit-card reveal">
+            <i class="fa-solid fa-eye"></i>
+            <h4>Improve visibility</h4>
+            <p>Teams can see what is pending, overdue, approved, or complete.</p>
+          </article>
+
+          <article class="benefit-card reveal">
+            <i class="fa-solid fa-shield-halved"></i>
+            <h4>Strengthen control</h4>
+            <p>Keep a proper history of decisions, approvals, and exceptions.</p>
+          </article>
+
+          <article class="benefit-card reveal">
+            <i class="fa-solid fa-users-gear"></i>
+            <h4>Support growth</h4>
+            <p>Process discipline scales better than constant manual follow-up.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="about-copy reveal">
+          <span class="section-label">About BAU Solutions</span>
+          <h2>We help businesses tighten up the day-to-day work that keeps them moving.</h2>
+          <p>
+            BAU Solutions focuses on practical business process automation across
+            approvals, requests, forms, reporting, and handoffs between systems or departments.
+          </p>
+          <p>
+            The goal is simple: less manual work, better control, and clearer visibility.
+          </p>
+        </div>
+
+        <aside class="about-card reveal">
+          <h3>Why businesses work with us</h3>
+          <ul class="check-list">
+            <li>Clear scope before build work starts</li>
+            <li>Grounded process thinking, not just software talk</li>
+            <li>Automation designed around real operations</li>
+            <li>Support for refinement after go-live</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section cta-section">
+      <div class="container cta-box reveal">
+        <div>
+          <span class="section-label">Next step</span>
+          <h2>Start with one process that is causing delays.</h2>
+          <p>Fix the workflow that wastes the most time first. Expand from there.</p>
+        </div>
+        <a href="#contact" class="btn btn-primary">Talk to BAU Solutions</a>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-copy reveal">
+          <span class="section-label">Contact</span>
+          <h2>Start the conversation</h2>
+          <p>
+            Tell us which process is slow, manual, or hard to track. That is usually the best place to begin.
+          </p>
+
+          <div class="contact-list">
+            <a href="tel:+260979668763">
+              <i class="fa-solid fa-phone"></i>
+              <span>+260 97 966 8763</span>
+            </a>
+
+            <a href="mailto:info@bausolutions.africa">
+              <i class="fa-solid fa-envelope"></i>
+              <span>info@bausolutions.africa</span>
+            </a>
+
+            <div>
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Lusaka, Zambia</span>
+            </div>
+
+            <a
+              href="https://www.linkedin.com/company/bausolutionsltd"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="fa-brands fa-linkedin"></i>
+              <span>BAU Solutions on LinkedIn</span>
+            </a>
+          </div>
+        </div>
+
+        <form class="contact-form reveal" id="contactForm">
+          <div class="form-row">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required />
+          </div>
+
+          <div class="form-row">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@company.com" required />
+          </div>
+
+          <div class="form-row">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="What is this about?" required />
+          </div>
+
+          <div class="form-row">
+            <label for="company">Company</label>
+            <input type="text" id="company" name="company" placeholder="Your company name" />
+          </div>
+
+          <div class="form-row">
+            <label for="message">Which process needs work?</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              placeholder="Example: purchase requests, service updates, invoice approvals, internal approvals..."
+              required
+            ></textarea>
+          </div>
+
+          <div class="form-row">
+            <div
+              class="g-recaptcha"
+              data-sitekey="6LeNPhQsAAAAANGEWYw1bWJZR_A3_h5NsYFxChU1"
+              data-callback="recaptchaCompleted"
+              data-expired-callback="recaptchaExpired"
+            ></div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-full" id="submitButton">
+            Send Enquiry
+          </button>
+
+          <p class="form-note" id="formMessage"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>&copy; <span id="currentYear">2026</span> BAU Solutions Limited. All rights reserved.</p>
+      <button type="button" class="footer-top-link" id="backToTop">Back to top</button>
+    </div>
+  </footer>
+
+  <!-- Demo Modal -->
+  <div class="demo-modal" id="demoModal" aria-hidden="true">
+    <div class="demo-modal-overlay" id="demoModalOverlay"></div>
+
+    <div class="demo-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="demoModalTitle">
+      <button class="demo-modal-close" id="demoModalClose" type="button" aria-label="Close demo modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="demo-modal-head">
+        <p class="workflow-kicker">Interactive workflow demo</p>
+        <h3 id="demoModalTitle">Workflow Demo</h3>
+        <p id="demoModalText">
+          Try a short interactive simulation.
+        </p>
+      </div>
+
+      <div class="demo-modal-grid">
+        <section class="demo-builder">
+          <h4>1. Set the sample request</h4>
+
+          <div id="demoFormFields"></div>
+
+          <div class="demo-builder-actions">
+            <button class="btn btn-primary" id="demoRunBtn" type="button">Run Demo</button>
+            <button class="btn btn-secondary" id="demoResetBtn" type="button">Restart Demo</button>
+          </div>
+
+          <div class="demo-decision-box" id="demoDecisionBox" hidden>
+            <h4>2. Take the next action</h4>
+            <p id="demoDecisionText">Choose what happens next.</p>
+            <div class="demo-decision-actions" id="demoDecisionActions"></div>
+          </div>
+        </section>
+
+        <section class="demo-visuals">
+          <div class="demo-status-panel">
+            <div class="demo-stat">
+              <span class="sim-label">Current status</span>
+              <strong id="demoCurrentStatus">Ready</strong>
+            </div>
+            <div class="demo-stat">
+              <span class="sim-label">Current owner</span>
+              <strong id="demoCurrentOwner">-</strong>
+            </div>
+            <div class="demo-stat">
+              <span class="sim-label">Business outcome</span>
+              <strong id="demoBusinessOutcome">Select a demo to begin</strong>
+            </div>
+          </div>
+
+          <div class="demo-steps" id="demoSteps"></div>
+
+          <div class="demo-log" id="demoLog">
+            <div class="demo-log-item">Open an example and run the demo.</div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <script src="JavaScript/bausolutions.js"></script>
+</body>
+</html>
